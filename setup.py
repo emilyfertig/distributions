@@ -36,13 +36,13 @@ if len(sys.argv) >= 2 and sys.argv[1] == 'bdist_wheel':
     assert setuptools  # satisfy pyflakes
 
 from distutils.core import setup, Extension
-from distutils.version import LooseVersion
+from packaging.version import Version
 
 try:
     from Cython.Build import cythonize
     from cython import __version__ as cython_version
     min_cython_version = '0.20.1'
-    if LooseVersion(cython_version) < LooseVersion(min_cython_version):
+    if Version(cython_version) < Version(min_cython_version):
         raise ValueError(
             'cython support requires cython>={}'.format(min_cython_version))
     cython = True
@@ -59,6 +59,7 @@ if os.environ.get('CXX', '').startswith('g++'):
     clang = False
 
 
+# include_dirs = ['/usr/local/google/home/emilyaf/posterior_loom/distributions/include', '/usr/local/google/home/emilyaf/posterior_loom/distributions/distributions', '.', '/usr/local/google/home/emilyaf/posterior_loom/distributions/distributions/lp', '/usr/local/google/home/emilyaf/posterior_loom/distributions/distributions/hp']
 include_dirs = ['include', 'distributions']
 include_dirs.append(numpy.get_include())
 
@@ -70,6 +71,8 @@ extra_compile_args = [
     '-DDIST_THROW_ON_ERROR=1',
     '-Wno-unused-function',
     '-Wno-unused-variable',
+    # '-L/usr/local/google/home/emilyaf/.virtualenvs/loom/lib',
+    # '-ldistributions_shared',
 ]
 if clang:
     extra_compile_args.extend([
@@ -114,6 +117,7 @@ def make_extension(name):
     if use_protobuf:
         libraries.append('protobuf')
     if name.startswith('lp'):
+        # libraries = ['/usr/local/google/home/emilyaf/.virtualenvs/loom/lib/distributions_shared'] + libraries
         libraries = ['distributions_shared'] + libraries
     return Extension(
         module,
@@ -166,7 +170,7 @@ lp_extensions = make_extensions([
 
 
 if cython:
-    ext_modules = cythonize(hp_extensions + lp_extensions)
+    ext_modules = cythonize(hp_extensions + lp_extensions, compiler_directives={'language_level': '3'})
 else:
     ext_modules = hp_extensions + lp_extensions
 
