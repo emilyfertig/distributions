@@ -25,7 +25,7 @@
 # TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE
 # USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-from rng_cc cimport rng_t
+from distributions.rng_cc cimport rng_t
 
 
 cdef rng_t * get_rng()

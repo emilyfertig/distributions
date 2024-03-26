@@ -32,7 +32,7 @@ from distributions.hp.special cimport log, gammaln
 from distributions.hp.random cimport sample_dirichlet, sample_discrete
 from distributions.mixins import SharedMixin, GroupIoMixin, SharedIoMixin
 
-cpdef int MAX_DIM = 256
+cdef int MAX_DIM = 256
 
 NAME = 'DirichletDiscrete'
 EXAMPLES = [

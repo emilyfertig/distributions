@@ -25,8 +25,8 @@
 # TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE
 # USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-cimport _nich
-import _nich
+from distributions.lp.models cimport _nich
+from distributions.lp.models import _nich
 
 from distributions.mixins import SharedMixin, GroupIoMixin, SharedIoMixin
 

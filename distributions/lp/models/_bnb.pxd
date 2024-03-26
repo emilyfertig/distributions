@@ -25,7 +25,7 @@
 # TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE
 # USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-cimport _bnb_h as _h
+cimport distributions.lp.models._bnb_h as _h
 
 
 from libc.stdint cimport uint32_t

@@ -25,8 +25,8 @@
 # TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE
 # USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-cimport _gp
-import _gp
+from distributions.lp.models cimport _gp
+from distributions.lp.models import _gp
 
 from distributions.mixins import SharedMixin, GroupIoMixin, SharedIoMixin
 

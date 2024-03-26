@@ -27,7 +27,7 @@
 
 from distributions._eigen_h cimport VectorXf, MatrixXf
 from distributions._eigen cimport to_np_1darray, to_eigen_vecf
-cimport _niw_h as _h
+cimport distributions.lp.models._niw_h as _h
 
 from libc.stdint cimport uint32_t
 from libcpp.vector cimport vector

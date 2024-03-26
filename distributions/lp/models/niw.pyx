@@ -33,8 +33,8 @@ from distributions._eigen cimport (
     to_np_2darray,
 )
 
-cimport _niw
-import _niw
+from distributions.lp.models cimport _niw
+from distributions.lp.models import _niw
 
 from distributions.mixins import SharedMixin, GroupIoMixin, SharedIoMixin
 
