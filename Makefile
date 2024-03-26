@@ -15,6 +15,7 @@ endif
 
 cmake_args=
 nose_env:=NOSE_PROCESSES=$(cpu_count) NOSE_PROCESS_TIMEOUT=240
+cmake_args+=-DCMAKE_INSTALL_PREFIX=/usr/local/google/home/emilyaf/posterior_loom
 ifdef VIRTUAL_ENV
 	root_path=$(VIRTUAL_ENV)
 else
@@ -24,13 +25,13 @@ else
 		root_path='../..'
 	endif
 endif
-cmake_args=-DCMAKE_INSTALL_PREFIX=$(root_path)
+# cmake_args=-DCMAKE_INSTALL_PREFIX=$(root_path)
 library_path=$(LIBRARY_PATH):$(root_path)/lib/
 nose_env+=$(ld_library_path)=$($(ld_library_path)):$(root_path)/lib/
 
-ifdef CMAKE_INSTALL_PREFIX
-	cmake_args=-DCMAKE_INSTALL_PREFIX=$(CMAKE_INSTALL_PREFIX)
-endif
+# ifdef CMAKE_INSTALL_PREFIX
+	# cmake_args=-DCMAKE_INSTALL_PREFIX=$(CMAKE_INSTALL_PREFIX)
+# endif
 
 all: test
 
